@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GIT dan SET</title>
+</head>
+
+<body>
+
+  <div id="app">
+    {{biodata}}
+  </div>
+
+  <script src="vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        nama: 'adi bagas pratama',
+        umur: 23,
+        biodata: ""
+      },
+      computed: {
+        biodata: {
+          get: function () {
+            return this.nama + " umurnya " + this.umur
+          },
+          set: function (coba) {
+            var c = coba.split(" ")
+            this.nama = c[0]
+            this.umur = c[1]
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
