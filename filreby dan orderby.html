@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>filerby dan order by</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <ol>
+      <li v-for="member in members">
+        {{member.nama}} - {{member.umur}}
+      </li>
+      Di bawah ini menggunakan filterBy
+      <li v-for="member in members | filterBy 'd' in 'nama'">
+        {{member.nama | capitalize}} - {{member.umur}}
+      </li> dan dibawah ini menggunakan orderBy
+      <li v-for="member in members | orderBy 'nama'">
+        {{member.nama}} - {{member.umur}}
+      </li>
+    </ol>
+  </div>
+
+
+  <script src="vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        members: [
+          { nama: 'adi bagas Pratama', umur: 23 },
+          { nama: 'vickri', umur: 24 },
+          { nama: 'hadi', umur: 25 }
+        ]
+      }
+    })
+  </script>
+</body>
+
+</html>
