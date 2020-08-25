@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-onclick dan v-onkeyup</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <input type="text" v-on:keyup.enter="klik">
+    <button v-on:click="klik">Klik Saya!</button>
+    <a href="#" v-on:click="klik">Link! a</a>
+  </div>
+
+
+  <script src="vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+
+      },
+      methods: {
+        klik: function () {
+          alert('ada siapa disana')
+          console.log("Berhasil klik!")
+        },
+        kliksaya: function () {
+          alert("berhasil enter")
+          console.log("berhassil enter")
+        }
+
+      }
+    })
+  </script>
+</body>
+
+</html>
