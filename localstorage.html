@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Storage</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <table>
+      <tr>
+        <td>
+          Nama
+        </td>
+        <td>
+          : <input type="text" v-model="nama">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Password
+        </td>
+        <td>
+          : <input type="password" v-model="password">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Jenis Kelamin
+        </td>
+        <td>
+          : Laki-laki <input type="radio" value="Laki-laki" v-model="jenisKelamin">
+        </td>
+        <td>
+          : Perempuan <input type="radio" value="Perempuan" v-model="jenisKelamin">
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td align="right"><button @click="simpan">Simpan</button></td>
+      </tr>
+    </table>
+
+  </div>
+
+
+  <script src="vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        nama: "",
+        password: "",
+        jenisKelamin: ""
+
+      },
+      mounted() {
+        if (localStorage.nama) {
+          this.nama = localStorage.nama;
+        }
+        if (localStorage.password) {
+          this.password = localStorage.password;
+        }
+        if (localStorage.jenisKelamin) {
+          this.jenisKelamin = localStorage.jenisKelamin;
+        }
+      },
+      methods: {
+        simpan: function () {
+          localStorage.nama = this.nama
+          localStorage.password = this.password
+          localStorage.jenisKelamin = this.jenisKelamin
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
