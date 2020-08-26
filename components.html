@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Components</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <baru pesan="tes"></baru>
+    <br>
+    <tes :contoh="nama" :umur="umur"></tes>
+
+
+    <template id="post-template">
+      <div>
+        <ul>
+          <li>saya bagas </li>
+          <li>saya siapa</li>
+          <li>{{pesan}}</li>
+        </ul>
+      </div>
+    </template>
+
+    <template id="bikin">
+      <div>
+        <ol>
+          <li>{{contoh}}
+          </li>
+          <li>{{umur}}</li>
+
+        </ol>
+      </div>
+    </template>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.25/vue.min.js"></script>
+  <script>
+
+    var cobaLagi = Vue.extend({
+      template: '#post-template',
+      props: ['pesan']
+    })
+
+    Vue.component('baru', cobaLagi)
+
+    Vue.component('tes', {
+      template: '#bikin',
+      props: ['contoh', 'umur']
+    })
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        nama: 'bagas',
+        umur: 23
+      }
+    })
+
+  </script>
+</body>
+
+</html>

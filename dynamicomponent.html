@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Component</title>
+  <style>
+    .fade-transition {
+      transition: opacity 0.6s ease;
+    }
+
+    .fade-enter,
+    .fade-leave {
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div id="app">
+    <ul>
+      <li><a href="#" @click="panggil='home'">Home</a></li>
+      <li><a href="#" @click="panggil='info'">Info Kontak</a></li>
+    </ul>
+    <component :is="panggil" transition="fade" transition-mode="out-in" keep-alive></component>
+  </div>
+
+
+  <template id="baru">
+    <h1>aku</h1>
+    <h2>tresno</h2>
+    <h3>karo koe</h3>
+  </template>
+  <template id="kontak">
+    <ol>
+      <li v-for="kontaka in kontaks">
+        {{kontaka.nama}} No Hp: {{kontaka.nomor}}
+      </li>
+    </ol>
+  </template>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.25/vue.min.js"></script>
+  <script>
+
+    Vue.component('home', {
+      template: '#baru'
+    })
+
+    Vue.component('info', {
+      template: '#kontak',
+      data: function () {
+        return {
+          kontaks: [
+            { nama: "adi", nomor: 0895263774 },
+            { nama: "bagas", nomor: 08992398327 },
+            { nama: "pratama", nomor: 088832723 }
+          ]
+        }
+      }
+    })
+
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        panggil: "home"
+      }
+    })
+  </script>
+</body>
+
+</html>
